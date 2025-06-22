@@ -4,7 +4,6 @@ namespace Alura\Pdo\Infrastructure\Repository;
 
 use Alura\Pdo\Domain\Repository\StudentRepository;
 use Alura\Pdo\Domain\Model\Student;
-use Alura\Pdo\Infrastructure\Persistence\ConnectionCreator;
 use PDO;
 class PdoStudentRepository implements StudentRepository
 {   
@@ -32,7 +31,7 @@ class PdoStudentRepository implements StudentRepository
 
     public function hydrateStudentList(\PDOStatement $statement): array 
     {
-        $studentsDataList = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $studentsDataList = $statement->fetchAll();
         $studentsList = [];
 
         foreach( $studentsDataList as $studentData   ) {
@@ -74,7 +73,7 @@ class PdoStudentRepository implements StudentRepository
             ':name' => $student->name(),
             ':birth_date' => $student->birthDate()->format('Y-m-d'),
         ]);
-
+        
         if($succcess){
             $student->defineId($this->connection->lastInsertId());   
         }
