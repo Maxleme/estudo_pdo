@@ -5,7 +5,7 @@ $pdo = new PDO('sqlite:'.$caminhoBanco);
 
 echo 'Conectado';
 
-//$pdo->exec("INSERT INTO phones (area_code, number, student_id) VALUES ('11', 999999999, 1), ('11', 999999998, 1);");
+//$pdo->exec("INSERT INTO phones (area_code, number, student_id) VALUES ('11', 999999997, 2), ('11', 999999996, 3);");
 //exit();
 
 $createTableSQL = '
